@@ -16,12 +16,13 @@ function findLongestWord(words) {
   if (!words.length) {
     return null;
   }
-  let emptyArray = [];
+  let emptyArray = '';
   for (let i = 0; i < words.length; i++) {
-    if (words.length < words[i].length) {
-      return (emptyArray += words[i]);
+    if (emptyArray.length < words[i].length) {
+      emptyArray = words[i];
     }
   }
+  return emptyArray;
 }
 
 // Iteration #3: Calculate the sum
@@ -84,12 +85,30 @@ function uniquifyArray(words) {
   if (!words.length) {
     return null;
   }
+
+  let uniqueWords = [];
+  for (let i = 0; i < words.length; i++) {
+    if (uniqueWords.indexOf(words[i]) === -1) {
+      uniqueWords.push(words[i]);
+    }
+  }
+  return uniqueWords;
 }
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(words, test) {
+  if (words.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === test) {
+      return true;
+    }
+  }
+  return false;
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -106,7 +125,18 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordSearch) {
+  if (!words.length) {
+    return 0;
+  }
+  let counter = 0;
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === wordSearch) {
+      counter++;
+    }
+  }
+  return counter;
+}
 
 // Iteration #8: Bonus
 const matrix = [
